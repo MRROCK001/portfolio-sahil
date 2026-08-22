@@ -1,278 +1,388 @@
 <!DOCTYPE html>
 <html lang="en">
+
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <meta name="description" content="Sahil Kumar - IT Engineer Portfolio">
+
     <title>Sahil Kumar | IT Engineer</title>
 
+    <!-- CSS -->
     <link rel="stylesheet" href="style.css">
-    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.2/css/all.min.css">
+
+    <!-- Font Awesome -->
+    <link rel="stylesheet"
+        href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.2/css/all.min.css">
+
+    <!-- EmailJS -->
+    <script src="https://cdn.jsdelivr.net/npm/@emailjs/browser@4/dist/email.min.js"></script>
+
+    <script>
+        emailjs.init({
+            publicKey: "RaxFUuEpa4IUul_7m",
+        });
+    </script>
+
 </head>
 
 <body>
 
-<header class="header">
-    <a href="#home" class="logo">Sahil<span>.</span></a>
+    <!-- =========================
+         HEADER
+    ========================== -->
 
-    <nav class="nav" id="nav">
-        <a href="#home">Home</a>
-        <a href="#about">About</a>
-        <a href="#skills">Skills</a>
-        <a href="#experience">Experience</a>
-        <a href="#education">Education</a>
-        <a href="#contact">Contact</a>
-    </nav>
+    <header>
 
-    <div class="header-actions">
-        <button id="themeBtn" aria-label="Toggle theme">
+        <div class="logo">
+            <h2>Sahil Kumar</h2>
+        </div>
+
+        <nav>
+
+            <a href="#home">Home</a>
+            <a href="#about">About</a>
+            <a href="#skills">Skills</a>
+            <a href="#experience">Experience</a>
+            <a href="#education">Education</a>
+            <a href="#contact">Contact</a>
+
+        </nav>
+
+        <button id="theme-btn" type="button">
             <i class="fa-solid fa-moon"></i>
         </button>
-        <button id="menuBtn" class="menu-btn" aria-label="Open menu">
-            <i class="fa-solid fa-bars"></i>
-        </button>
-    </div>
-</header>
 
-<main>
+    </header>
 
-<section class="hero" id="home">
-    <div class="hero-content">
-        <p class="eyebrow">IT ENGINEER • IT SUPPORT • IT OPERATIONS</p>
-        <h1>Sahil Kumar</h1>
-        <h2>IT Engineer <span id="typing"></span></h2>
 
-        <p class="hero-text">
-            IT professional with 4+ years of experience in end-user support,
-            Windows, networking, hardware & software troubleshooting,
-            remote support, database support and laboratory IT operations.
+    <!-- =========================
+         HERO
+    ========================== -->
+
+    <section class="hero" id="home">
+
+        <div class="hero-left">
+
+            <h3>Hello, I'm</h3>
+
+            <h1>Sahil Kumar</h1>
+
+            <h2>IT Engineer</h2>
+
+            <p>
+                IT Engineer with 4+ years of experience in IT Support,
+                VMware, IT Operations, and Technical Troubleshooting.
+                Skilled in Windows 10/11, Active Directory (Basic),
+                Microsoft Outlook, hardware & software support,
+                network troubleshooting, remote support, and laboratory
+                IT data backup using Chromeleon CDS, HPLC, GC, Shimadzu,
+                JASCO, and Veego systems.
+            </p>
+
+            <div class="buttons">
+
+                <a href="Sahil Kumar.pdf"
+                   class="btn"
+                   target="_blank"
+                   download>
+
+                    <i class="fa-solid fa-download"></i>
+                    Download Resume
+
+                </a>
+
+                <a href="#contact" class="btn2">
+                    Contact Me
+                </a>
+
+            </div>
+
+        </div>
+
+
+        <div class="hero-right">
+
+            <img src="profile.jpg" alt="Sahil Kumar">
+
+        </div>
+
+    </section>
+
+
+    <!-- =========================
+         ABOUT
+    ========================== -->
+
+    <section id="about" class="about">
+
+        <h2 class="heading">
+            About Me
+        </h2>
+
+        <div class="about-content">
+
+            <p>
+                I am an IT Engineer with 4+ years of experience in IT
+                Support, Windows Administration, and IT Operations.
+                I have hands-on experience in providing technical support,
+                troubleshooting hardware, software, and network issues,
+                and ensuring smooth IT operations in corporate environments.
+
+                My expertise includes Windows 10/11 installation and
+                configuration, Microsoft Outlook, Active Directory (Basic),
+                printer installation, remote support using AnyDesk and
+                TeamViewer, IT asset management, software deployment,
+                and LAN/Wi-Fi troubleshooting.
+
+                I also have experience in laboratory IT operations,
+                including data backup and management of Chromeleon CDS,
+                HPLC, GC, Shimadzu, JASCO, and Veego instruments.
+            </p>
+
+        </div>
+
+    </section>
+
+
+    <!-- =========================
+         TECHNICAL SKILLS
+    ========================== -->
+
+    <section id="skills" class="skills">
+
+        <h2 class="heading">
+            Technical Skills
+        </h2>
+
+        <div class="skill-box">
+
+            <div class="card">Windows 10 / 11</div>
+
+            <div class="card">Active Directory</div>
+
+            <div class="card">Networking</div>
+
+            <div class="card">Hardware Troubleshooting</div>
+
+            <div class="card">Software Installation</div>
+
+            <div class="card">MS Outlook</div>
+
+            <div class="card">Remote Support</div>
+
+            <div class="card">Chromeleon CDS</div>
+
+            <div class="card">HPLC Backup</div>
+
+            <div class="card">GC Backup</div>
+
+            <div class="card">Shimadzu Backup</div>
+
+            <div class="card">JASCO Backup</div>
+
+            <div class="card">Veego Backup</div>
+
+        </div>
+
+    </section>
+
+
+    <!-- =========================
+         EXPERIENCE
+    ========================== -->
+
+    <section id="experience" class="experience">
+
+        <h2 class="heading">
+            Experience
+        </h2>
+
+        <div class="timeline">
+
+
+            <!-- UltraTech -->
+
+            <div class="timeline-item">
+
+                <h3>
+                    UltraTech India Limited
+                </h3>
+
+                <h4>
+                    IT Engineer
+                </h4>
+
+                <span>
+                    Dec 2025 - Feb 2026
+                </span>
+
+                <p>
+                    Provided IT and end-user technical support.
+                    Installed and configured Windows systems,
+                    Outlook, printers, and other IT peripherals.
+                    Troubleshot hardware, software, and network issues.
+                    Provided remote support and performed regular
+                    laboratory data backup and management for
+                    Chromeleon CDS, HPLC, GC, Shimadzu, JASCO,
+                    and Veego systems.
+                </p>
+
+            </div>
+
+
+            <!-- Sheetal -->
+
+            <div class="timeline-item">
+
+                <h3>
+                    Sheetal Prologitix LLP
+                </h3>
+
+                <h4>
+                    IT Engineer
+                </h4>
+
+                <span>
+                    Oct 2021 - Dec 2025
+                </span>
+
+                <p>
+                    Provided desktop and end-user technical support.
+                    Installed, configured, and troubleshot Windows
+                    operating systems. Installed and configured
+                    printers, scanners, and other peripherals.
+                    Diagnosed and resolved hardware and software issues.
+                    Configured Outlook and resolved email-related issues.
+                    Provided LAN/Wi-Fi and basic network troubleshooting.
+                    Performed software installation, updates, and
+                    system maintenance. Managed user accounts and
+                    provided remote support using AnyDesk and TeamViewer.
+                    Maintained IT assets and documented support activities.
+                    Coordinated with vendors for IT equipment and
+                    issue resolution.
+                </p>
+
+            </div>
+
+        </div>
+
+    </section>
+
+
+    <!-- =========================
+         EDUCATION
+    ========================== -->
+
+    <section id="education" class="education">
+
+        <h2 class="heading">
+            Education
+        </h2>
+
+        <div class="education-container">
+
+
+            <div class="education-card">
+
+                <h3>
+                    Bachelor of Computer Applications (BCA)
+                </h3>
+
+                <h4>
+                    Amity University, Noida
+                </h4>
+
+                <p>
+                    2024 - Present
+                </p>
+
+            </div>
+
+
+            <div class="education-card">
+
+                <h3>
+                    Bachelor of Commerce (B.Com)
+                </h3>
+
+                <h4>
+                    International School of Management Excellence, Pune
+                </h4>
+
+                <p>
+                    2020 - 2023
+                </p>
+
+            </div>
+
+        </div>
+
+    </section>
+
+
+    <!-- =========================
+         CONTACT
+    ========================== -->
+
+    <section id="contact" class="contact">
+
+        <h2 class="heading">
+            Contact Me
+        </h2>
+
+        <form id="contact-form">
+
+            <input
+                type="text"
+                name="name"
+                placeholder="Your Name"
+                required>
+
+
+            <input
+                type="email"
+                name="email"
+                placeholder="Your Email"
+                required>
+
+
+            <textarea
+                name="message"
+                rows="6"
+                placeholder="Your Message"
+                required></textarea>
+
+
+            <button type="submit">
+
+                <i class="fa-solid fa-paper-plane"></i>
+                Send Message
+
+            </button>
+
+        </form>
+
+    </section>
+
+
+    <!-- =========================
+         FOOTER
+    ========================== -->
+
+    <footer>
+
+        <p>
+            © 2026 Sahil Kumar |
+            IT Engineer |
+            All Rights Reserved.
         </p>
 
-        <div class="hero-buttons">
-            <a class="btn primary" href="Sahil Kumar.pdf" target="_blank" download>
-                <i class="fa-solid fa-download"></i> Download Resume
-            </a>
-            <a class="btn secondary" href="#contact">
-                <i class="fa-solid fa-paper-plane"></i> Contact Me
-            </a>
-        </div>
+    </footer>
 
-        <div class="quick-skills">
-            <span>Windows</span>
-            <span>Active Directory</span>
-            <span>Networking</span>
-            <span>SQL</span>
-            <span>Data Backup</span>
-        </div>
-    </div>
 
-    <div class="hero-image-wrap">
-        <div class="glow"></div>
-        <div class="image-ring">
-            <img src="profile.jpg" alt="Sahil Kumar">
-        </div>
-        <div class="status-card">
-            <span class="status-dot"></span>
-            Open to opportunities
-        </div>
-    </div>
-</section>
+    <!-- JavaScript -->
+    <script src="script.js"></script>
 
-<section class="section about" id="about">
-    <div class="section-heading">
-        <span>01</span>
-        <h2>About Me</h2>
-    </div>
-
-    <div class="about-grid">
-        <div class="about-main">
-            <h3>Reliable IT support. Practical solutions.</h3>
-            <p>
-                I am an IT Engineer with 4+ years of experience in IT Support,
-                End User Support, Windows Administration, Hardware & Software
-                Troubleshooting, Networking and IT Operations.
-            </p>
-            <p>
-                My hands-on experience includes Windows 10/11 installation,
-                Active Directory, DHCP, DNS, IP configuration, LAN/Wi-Fi,
-                printer setup, application installation, remote support and
-                desktop/laptop hardware maintenance.
-            </p>
-            <p>
-                I have also worked with basic SQL and database support,
-                Web Camera installation, automation-related systems, SAP
-                S/4HANA pharmaceutical billing, and laboratory data backup
-                for Chromeleon CDS, HPLC, GC, Shimadzu, JASCO and Veego systems.
-            </p>
-        </div>
-
-        <div class="about-stats">
-            <div class="stat"><strong>4+</strong><span>Years Experience</span></div>
-            <div class="stat"><strong>IT</strong><span>Support & Operations</span></div>
-            <div class="stat"><strong>24/7</strong><span>Problem Solving Mindset</span></div>
-        </div>
-    </div>
-</section>
-
-<section class="section skills" id="skills">
-    <div class="section-heading">
-        <span>02</span>
-        <h2>Technical Skills</h2>
-    </div>
-
-    <div class="skills-grid">
-        <div class="skill-card"><i class="fa-brands fa-windows"></i><h3>Windows</h3><p>Windows 10/11 installation, configuration and troubleshooting.</p></div>
-        <div class="skill-card"><i class="fa-solid fa-users-gear"></i><h3>Active Directory</h3><p>Basic user account, password and access management.</p></div>
-        <div class="skill-card"><i class="fa-solid fa-network-wired"></i><h3>Networking</h3><p>LAN, Wi-Fi, IP, DHCP, DNS and connectivity troubleshooting.</p></div>
-        <div class="skill-card"><i class="fa-solid fa-screwdriver-wrench"></i><h3>Hardware</h3><p>RAM, HDD, SSD, battery, printer and peripheral support.</p></div>
-        <div class="skill-card"><i class="fa-solid fa-database"></i><h3>SQL & Database</h3><p>Basic SQL queries and database-related technical support.</p></div>
-        <div class="skill-card"><i class="fa-solid fa-headset"></i><h3>Remote Support</h3><p>Client and user support using AnyDesk and TeamViewer.</p></div>
-        <div class="skill-card"><i class="fa-solid fa-flask"></i><h3>Laboratory IT</h3><p>Chromeleon CDS, HPLC, GC, Shimadzu, JASCO and Veego backup.</p></div>
-        <div class="skill-card"><i class="fa-solid fa-gears"></i><h3>Application & Automation</h3><p>Application installation, configuration and automation-related support.</p></div>
-        <div class="skill-card"><i class="fa-solid fa-file-invoice-dollar"></i><h3>SAP S/4HANA</h3><p>Pharmaceutical billing, invoices and transaction-related activities.</p></div>
-    </div>
-</section>
-
-<section class="section experience" id="experience">
-    <div class="section-heading">
-        <span>03</span>
-        <h2>Experience</h2>
-    </div>
-
-    <div class="timeline">
-
-        <article class="timeline-item">
-            <div class="timeline-date">May 2026 – Present</div>
-            <div class="timeline-content">
-                <h3>Indus Systems & Services Pvt. Ltd.</h3>
-                <h4>Desktop Support Engineer</h4>
-                <ul>
-                    <li>Provide end-user support for desktops, laptops and IT peripherals.</li>
-                    <li>Install, configure and troubleshoot Windows 10/11.</li>
-                    <li>Handle Active Directory, password resets and basic user management.</li>
-                    <li>Troubleshoot LAN, Wi-Fi, IP, DNS and DHCP issues.</li>
-                    <li>Install and configure printers, scanners and applications.</li>
-                    <li>Perform RAM, HDD, SSD and laptop battery replacement.</li>
-                    <li>Provide remote technical support using AnyDesk and TeamViewer.</li>
-                    <li>Maintain IT asset inventory and support documentation.</li>
-                </ul>
-            </div>
-        </article>
-
-        <article class="timeline-item">
-            <div class="timeline-date">Dec 2025 – Feb 2026</div>
-            <div class="timeline-content">
-                <h3>ULTRATECH INDIA LIMITED</h3>
-                <h4>Desktop Support Engineer</h4>
-                <ul>
-                    <li>Provided desktop and end-user IT support.</li>
-                    <li>Handled Windows installation, Outlook, printers and network troubleshooting.</li>
-                    <li>Provided remote support using AnyDesk and TeamViewer.</li>
-                    <li>Managed laboratory data backup and archival.</li>
-                    <li>Worked with Chromeleon CDS, HPLC, GC, Shimadzu, JASCO and Veego systems.</li>
-                    <li>Performed backup verification and maintained laboratory data storage.</li>
-                </ul>
-            </div>
-        </article>
-
-        <article class="timeline-item">
-            <div class="timeline-date">Nov 2024 – Dec 2025</div>
-            <div class="timeline-content">
-                <h3>DIMENSIONLESS TECHNOLOGIES PVT. LTD.</h3>
-                <h4>IT Support Engineer</h4>
-                <ul>
-                    <li>Provided desktop and end-user technical support.</li>
-                    <li>Installed and configured Windows systems and applications.</li>
-                    <li>Installed and configured Web Cameras and other IT peripherals.</li>
-                    <li>Supported automation-related systems and software.</li>
-                    <li>Provided remote technical support to clients.</li>
-                    <li>Performed basic SQL queries and database-related support.</li>
-                    <li>Handled application troubleshooting and technical issue resolution.</li>
-                </ul>
-            </div>
-        </article>
-
-        <article class="timeline-item">
-            <div class="timeline-date">Oct 2021 – Nov 2024</div>
-            <div class="timeline-content">
-                <h3>SHEETAL PROLOGITIX LLP</h3>
-                <h4>IT Engineer – Deployed at Mankind Pharma</h4>
-                <ul>
-                    <li>Provided desktop and end-user technical support.</li>
-                    <li>Installed and troubleshot Windows, printers, scanners and peripherals.</li>
-                    <li>Handled LAN/Wi-Fi, Outlook and software troubleshooting.</li>
-                    <li>Provided remote technical support and maintained IT assets.</li>
-                    <li>Worked with SAP S/4HANA for pharmaceutical billing activities.</li>
-                    <li>Processed pharmaceutical invoices, sales orders and billing transactions.</li>
-                    <li>Prepared backup documentation, audit records and compliance documents.</li>
-                </ul>
-            </div>
-        </article>
-
-    </div>
-</section>
-
-<section class="section education" id="education">
-    <div class="section-heading">
-        <span>04</span>
-        <h2>Education</h2>
-    </div>
-
-    <div class="education-card">
-        <div>
-            <span class="education-year">2020 – 2023</span>
-            <h3>Bachelor of Commerce (B.Com)</h3>
-            <p>International School of Management Excellence, Pune</p>
-        </div>
-        <i class="fa-solid fa-graduation-cap"></i>
-    </div>
-</section>
-
-<section class="section contact" id="contact">
-    <div class="section-heading">
-        <span>05</span>
-        <h2>Let's Connect</h2>
-    </div>
-
-    <div class="contact-grid">
-        <div class="contact-info">
-            <h3>Have an IT requirement?</h3>
-            <p>
-                Feel free to reach out for IT Support, IT Engineer,
-                Desktop Support, Technical Support or IT Operations opportunities.
-            </p>
-
-            <div class="contact-links">
-                <a href="mailto:sahil56556h@gmail.com">
-                    <i class="fa-solid fa-envelope"></i>
-                    sahil56556h@gmail.com
-                </a>
-                <a href="tel:+917387923490">
-                    <i class="fa-solid fa-phone"></i>
-                    +91 7387923490
-                </a>
-            </div>
-        </div>
-
-        <form id="contactForm">
-            <input type="text" name="name" placeholder="Your Name" required>
-            <input type="email" name="email" placeholder="Your Email" required>
-            <textarea name="message" rows="6" placeholder="Your Message" required></textarea>
-            <button type="submit" class="btn primary">
-                Send Message <i class="fa-solid fa-arrow-right"></i>
-            </button>
-            <p id="formStatus"></p>
-        </form>
-    </div>
-</section>
-
-</main>
-
-<footer>
-    <p>© 2026 Sahil Kumar. All Rights Reserved.</p>
-    <a href="#home"><i class="fa-solid fa-arrow-up"></i></a>
-</footer>
-
-<script src="script.js"></script>
 </body>
+
 </html>
