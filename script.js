@@ -1,328 +1,141 @@
 /* ==========================
-   PORTFOLIO SCRIPT
+   SAHIL KUMAR PORTFOLIO
 ========================== */
 
-
-/* ==========================
-   DARK / LIGHT MODE
-========================== */
-
+/* THEME */
 const themeBtn = document.getElementById("theme-btn");
 
+function updateThemeIcon() {
+    if (!themeBtn) return;
+    const light = document.body.classList.contains("light");
+    themeBtn.innerHTML = light
+        ? '<i class="fa-solid fa-sun"></i>'
+        : '<i class="fa-solid fa-moon"></i>';
+}
+
 if (localStorage.getItem("theme") === "light") {
-
     document.body.classList.add("light");
-
-    if (themeBtn) {
-
-        themeBtn.innerHTML =
-            '<i class="fa-solid fa-sun"></i>';
-
-    }
-
 }
+updateThemeIcon();
+
+themeBtn?.addEventListener("click", () => {
+    document.body.classList.toggle("light");
+    localStorage.setItem(
+        "theme",
+        document.body.classList.contains("light") ? "light" : "dark"
+    );
+    updateThemeIcon();
+});
 
 
-if (themeBtn) {
+/* MOBILE MENU */
+const menuBtn = document.getElementById("menu-btn");
+const nav = document.getElementById("nav");
 
-    themeBtn.addEventListener("click", function () {
+menuBtn?.addEventListener("click", () => {
+    nav?.classList.toggle("open");
+});
 
-        document.body.classList.toggle("light");
-
-        if (document.body.classList.contains("light")) {
-
-            localStorage.setItem("theme", "light");
-
-            themeBtn.innerHTML =
-                '<i class="fa-solid fa-sun"></i>';
-
-        } else {
-
-            localStorage.setItem("theme", "dark");
-
-            themeBtn.innerHTML =
-                '<i class="fa-solid fa-moon"></i>';
-
-        }
-
+document.querySelectorAll(".nav a").forEach(link => {
+    link.addEventListener("click", () => {
+        nav?.classList.remove("open");
     });
-
-}
-
-
-/* ==========================
-   ACTIVE MENU
-========================== */
-
-const sections =
-    document.querySelectorAll("section");
-
-const navLinks =
-    document.querySelectorAll("nav a");
+});
 
 
-window.addEventListener("scroll", function () {
+/* ACTIVE NAV */
+const sections = document.querySelectorAll("section[id]");
+const navLinks = document.querySelectorAll(".nav a");
 
+window.addEventListener("scroll", () => {
     let current = "";
 
-    sections.forEach(function (section) {
-
-        const sectionTop =
-            section.offsetTop - 150;
-
-        if (window.scrollY >= sectionTop) {
-
-            current =
-                section.getAttribute("id");
-
+    sections.forEach(section => {
+        const top = section.offsetTop - 160;
+        if (window.scrollY >= top) {
+            current = section.id;
         }
-
     });
 
-
-    navLinks.forEach(function (link) {
-
-        link.classList.remove("active");
-
-        if (
-            link.getAttribute("href") ===
-            "#" + current
-        ) {
-
-            link.classList.add("active");
-
-        }
-
+    navLinks.forEach(link => {
+        link.classList.toggle(
+            "active",
+            link.getAttribute("href") === `#${current}`
+        );
     });
-
 });
 
 
-/* ==========================
-   SMOOTH SCROLL
-========================== */
+/* SCROLL TO TOP */
+const topBtn = document.getElementById("topBtn");
 
-navLinks.forEach(function (link) {
+window.addEventListener("scroll", () => {
+    if (!topBtn) return;
+    topBtn.style.display = window.scrollY > 450 ? "grid" : "none";
+});
 
-    link.addEventListener("click", function (e) {
-
-        const id =
-            this.getAttribute("href");
-
-        const target =
-            document.querySelector(id);
-
-        if (target) {
-
-            e.preventDefault();
-
-            target.scrollIntoView({
-                behavior: "smooth"
-            });
-
-        }
-
-    });
-
+topBtn?.addEventListener("click", () => {
+    window.scrollTo({ top: 0, behavior: "smooth" });
 });
 
 
-/* ==========================
-   SCROLL TO TOP
-========================== */
+/* REVEAL ANIMATION */
+const revealObserver = new IntersectionObserver(
+    entries => {
+        entries.forEach(entry => {
+            if (entry.isIntersecting) {
+                entry.target.classList.add("show");
+                revealObserver.unobserve(entry.target);
+            }
+        });
+    },
+    { threshold: 0.12 }
+);
 
-const topBtn =
-    document.createElement("button");
-
-topBtn.innerHTML = "↑";
-
-topBtn.id = "topBtn";
-
-document.body.appendChild(topBtn);
+document.querySelectorAll(".reveal").forEach(el => {
+    revealObserver.observe(el);
+});
 
 
-window.addEventListener("scroll", function () {
+/* EMAILJS CONTACT FORM */
+const form = document.getElementById("contact-form");
+const formStatus = document.getElementById("form-status");
 
-    if (window.scrollY > 300) {
+form?.addEventListener("submit", async (e) => {
+    e.preventDefault();
 
-        topBtn.style.display = "block";
+    const button = form.querySelector("button");
+    const name = form.querySelector('[name="name"]').value.trim();
+    const email = form.querySelector('[name="email"]').value.trim();
+    const message = form.querySelector('[name="message"]').value.trim();
 
-    } else {
-
-        topBtn.style.display = "none";
-
+    if (!name || !email || !message) {
+        formStatus.textContent = "Please fill all fields.";
+        return;
     }
 
-});
+    button.disabled = true;
+    button.innerHTML = '<i class="fa-solid fa-spinner fa-spin"></i> Sending...';
+    formStatus.textContent = "";
 
-
-topBtn.addEventListener("click", function () {
-
-    window.scrollTo({
-
-        top: 0,
-
-        behavior: "smooth"
-
-    });
-
-});
-
-
-/* ==========================
-   CONTACT FORM + EMAILJS
-========================== */
-
-const form =
-    document.getElementById("contact-form");
-
-
-if (form) {
-
-    form.addEventListener("submit", function (e) {
-
-        e.preventDefault();
-
-
-        const name =
-            form.querySelector(
-                'input[name="name"]'
-            ).value.trim();
-
-
-        const email =
-            form.querySelector(
-                'input[name="email"]'
-            ).value.trim();
-
-
-        const message =
-            form.querySelector(
-                'textarea[name="message"]'
-            ).value.trim();
-
-
-        if (!name || !email || !message) {
-
-            alert("Please fill all fields.");
-
-            return;
-
-        }
-
-
-        const submitButton =
-            form.querySelector("button");
-
-        submitButton.disabled = true;
-
-        submitButton.innerHTML =
-            "Sending...";
-
-
-        emailjs.sendForm(
-
+    try {
+        await emailjs.sendForm(
             "service_y7ui1tt",
-
             "template_ltq5ab7",
+            form
+        );
 
-            form,
-
-            "RaxFUuEpa4IUul_7m"
-
-        )
-
-        .then(function () {
-
-            alert(
-                "✅ Thank you! Your message has been sent successfully."
-            );
-
-            form.reset();
-
-        })
-
-        .catch(function (error) {
-
-            console.error(
-                "EmailJS Error:",
-                error
-            );
-
-            alert(
-                "❌ Failed to send message. Please try again."
-            );
-
-        })
-
-        .finally(function () {
-
-            submitButton.disabled = false;
-
-            submitButton.innerHTML =
-                '<i class="fa-solid fa-paper-plane"></i> Send Message';
-
-        });
-
-    });
-
-}
-
-
-/* ==========================
-   FADE-IN ANIMATION
-========================== */
-
-const observer =
-    new IntersectionObserver(
-
-        function (entries) {
-
-            entries.forEach(function (entry) {
-
-                if (entry.isIntersecting) {
-
-                    entry.target.style.opacity = "1";
-
-                    entry.target.style.transform =
-                        "translateY(0)";
-
-                }
-
-            });
-
-        },
-
-        {
-            threshold: 0.15
-        }
-
-    );
-
-
-document.querySelectorAll(
-
-    ".card, .timeline-item, .education-card"
-
-).forEach(function (element) {
-
-    element.style.opacity = "0";
-
-    element.style.transform =
-        "translateY(40px)";
-
-    element.style.transition =
-        "0.8s ease";
-
-    observer.observe(element);
-
+        formStatus.textContent = "Message sent successfully.";
+        formStatus.style.color = "#22c55e";
+        form.reset();
+    } catch (error) {
+        console.error("EmailJS Error:", error);
+        formStatus.textContent = "Message could not be sent. Please try again.";
+        formStatus.style.color = "#f87171";
+    } finally {
+        button.disabled = false;
+        button.innerHTML = '<i class="fa-solid fa-paper-plane"></i> Send Message';
+    }
 });
 
-
-/* ==========================
-   PORTFOLIO LOADED
-========================== */
-
-console.log(
-    "Sahil Kumar Portfolio Loaded Successfully ✅"
-);
+console.log("Sahil Kumar Portfolio Loaded Successfully.");
