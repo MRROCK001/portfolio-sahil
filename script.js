@@ -2,127 +2,92 @@
    PORTFOLIO SCRIPT
 ========================== */
 
-// ==========================
-// DARK / LIGHT MODE
-// ==========================
+
+/* ==========================
+   DARK / LIGHT MODE
+========================== */
 
 const themeBtn = document.getElementById("theme-btn");
 
 if (localStorage.getItem("theme") === "light") {
+
     document.body.classList.add("light");
+
     if (themeBtn) {
-        themeBtn.innerHTML = '<i class="fa-solid fa-sun"></i>';
+
+        themeBtn.innerHTML =
+            '<i class="fa-solid fa-sun"></i>';
+
     }
+
 }
 
+
 if (themeBtn) {
-    themeBtn.addEventListener("click", () => {
+
+    themeBtn.addEventListener("click", function () {
 
         document.body.classList.toggle("light");
 
         if (document.body.classList.contains("light")) {
+
             localStorage.setItem("theme", "light");
-            themeBtn.innerHTML = '<i class="fa-solid fa-sun"></i>';
+
+            themeBtn.innerHTML =
+                '<i class="fa-solid fa-sun"></i>';
+
         } else {
+
             localStorage.setItem("theme", "dark");
-            themeBtn.innerHTML = '<i class="fa-solid fa-moon"></i>';
+
+            themeBtn.innerHTML =
+                '<i class="fa-solid fa-moon"></i>';
+
         }
 
     });
-}
-
-
-// ==========================
-// TYPING EFFECT
-// ==========================
-
-const typing = document.getElementById("typing");
-
-const roles = [
-
-    "IT Engineer",
-    // "IT Engineer",
-    // "Windows Administrator",
-    // "Network Support Engineer"
-
-];
-
-let roleIndex = 0;
-let charIndex = 0;
-let deleting = false;
-
-function typeEffect() {
-
-    if (!typing) return;
-
-    const current = roles[roleIndex];
-
-    if (!deleting) {
-
-        typing.textContent = current.substring(0, charIndex++);
-    } else {
-
-        typing.textContent = current.substring(0, charIndex--);
-
-    }
-
-    let speed = deleting ? 60 : 120;
-
-    if (!deleting && charIndex === current.length + 1) {
-
-        deleting = true;
-        speed = 1500;
-
-    }
-
-    if (deleting && charIndex === 0) {
-
-        deleting = false;
-        roleIndex++;
-
-        if (roleIndex >= roles.length) {
-
-            roleIndex = 0;
-
-        }
-
-    }
-
-    setTimeout(typeEffect, speed);
 
 }
 
-typeEffect();
+
+/* ==========================
+   ACTIVE MENU
+========================== */
+
+const sections =
+    document.querySelectorAll("section");
+
+const navLinks =
+    document.querySelectorAll("nav a");
 
 
-// ==========================
-// ACTIVE MENU
-// ==========================
-
-const sections = document.querySelectorAll("section");
-const navLinks = document.querySelectorAll("nav a");
-
-window.addEventListener("scroll", () => {
+window.addEventListener("scroll", function () {
 
     let current = "";
 
-    sections.forEach(section => {
+    sections.forEach(function (section) {
 
-        const sectionTop = section.offsetTop - 120;
+        const sectionTop =
+            section.offsetTop - 150;
 
-        if (pageYOffset >= sectionTop) {
+        if (window.scrollY >= sectionTop) {
 
-            current = section.getAttribute("id");
+            current =
+                section.getAttribute("id");
 
         }
 
     });
 
-    navLinks.forEach(link => {
+
+    navLinks.forEach(function (link) {
 
         link.classList.remove("active");
 
-        if (link.getAttribute("href") === "#" + current) {
+        if (
+            link.getAttribute("href") ===
+            "#" + current
+        ) {
 
             link.classList.add("active");
 
@@ -133,34 +98,41 @@ window.addEventListener("scroll", () => {
 });
 
 
-// ==========================
-// SMOOTH SCROLL
-// ==========================
+/* ==========================
+   SMOOTH SCROLL
+========================== */
 
-navLinks.forEach(link => {
+navLinks.forEach(function (link) {
 
-    link.addEventListener("click", function(e) {
+    link.addEventListener("click", function (e) {
 
-        e.preventDefault();
+        const id =
+            this.getAttribute("href");
 
-        const id = this.getAttribute("href");
+        const target =
+            document.querySelector(id);
 
-        document.querySelector(id).scrollIntoView({
+        if (target) {
 
-            behavior: "smooth"
+            e.preventDefault();
 
-        });
+            target.scrollIntoView({
+                behavior: "smooth"
+            });
+
+        }
 
     });
 
 });
 
 
-// ==========================
-// SCROLL TO TOP BUTTON
-// ==========================
+/* ==========================
+   SCROLL TO TOP
+========================== */
 
-const topBtn = document.createElement("button");
+const topBtn =
+    document.createElement("button");
 
 topBtn.innerHTML = "↑";
 
@@ -168,25 +140,8 @@ topBtn.id = "topBtn";
 
 document.body.appendChild(topBtn);
 
-Object.assign(topBtn.style, {
 
-    position: "fixed",
-    bottom: "30px",
-    right: "30px",
-    width: "50px",
-    height: "50px",
-    borderRadius: "50%",
-    border: "none",
-    background: "#38bdf8",
-    color: "#fff",
-    fontSize: "22px",
-    cursor: "pointer",
-    display: "none",
-    zIndex: "999"
-
-});
-
-window.addEventListener("scroll", () => {
+window.addEventListener("scroll", function () {
 
     if (window.scrollY > 300) {
 
@@ -200,59 +155,112 @@ window.addEventListener("scroll", () => {
 
 });
 
-topBtn.onclick = () => {
+
+topBtn.addEventListener("click", function () {
 
     window.scrollTo({
 
         top: 0,
+
         behavior: "smooth"
 
     });
 
-};
+});
 
 
-// ==========================
-// CONTACT FORM + EMAILJS
-// ==========================
+/* ==========================
+   CONTACT FORM + EMAILJS
+========================== */
 
-const form = document.querySelector("form");
+const form =
+    document.getElementById("contact-form");
+
 
 if (form) {
 
-    form.addEventListener("submit", function(e) {
+    form.addEventListener("submit", function (e) {
 
         e.preventDefault();
 
-        const name = form.querySelector('input[name="name"]').value.trim();
-        const email = form.querySelector('input[name="email"]').value.trim();
-        const message = form.querySelector('textarea[name="message"]').value.trim();
+
+        const name =
+            form.querySelector(
+                'input[name="name"]'
+            ).value.trim();
+
+
+        const email =
+            form.querySelector(
+                'input[name="email"]'
+            ).value.trim();
+
+
+        const message =
+            form.querySelector(
+                'textarea[name="message"]'
+            ).value.trim();
+
 
         if (!name || !email || !message) {
+
             alert("Please fill all fields.");
+
             return;
+
         }
 
+
+        const submitButton =
+            form.querySelector("button");
+
+        submitButton.disabled = true;
+
+        submitButton.innerHTML =
+            "Sending...";
+
+
         emailjs.sendForm(
+
             "service_y7ui1tt",
+
             "template_ltq5ab7",
-            this,
+
+            form,
+
             "RaxFUuEpa4IUul_7m"
+
         )
 
-        .then(() => {
+        .then(function () {
 
-            alert("✅ Thank you! Your message has been sent.");
+            alert(
+                "✅ Thank you! Your message has been sent successfully."
+            );
 
             form.reset();
 
         })
 
-        .catch((error) => {
+        .catch(function (error) {
 
-            console.error(error);
+            console.error(
+                "EmailJS Error:",
+                error
+            );
 
-            alert("❌ Failed to send message.");
+            alert(
+                "❌ Failed to send message. Please try again."
+            );
+
+        })
+
+        .finally(function () {
+
+            submitButton.disabled = false;
+
+            submitButton.innerHTML =
+                '<i class="fa-solid fa-paper-plane"></i> Send Message';
 
         });
 
@@ -260,46 +268,61 @@ if (form) {
 
 }
 
-// ==========================
-// FADE-IN ON SCROLL
-// ==========================
 
-const observer = new IntersectionObserver((entries) => {
+/* ==========================
+   FADE-IN ANIMATION
+========================== */
 
-    entries.forEach(entry => {
+const observer =
+    new IntersectionObserver(
 
-        if (entry.isIntersecting) {
+        function (entries) {
 
-            entry.target.style.opacity = "1";
-            entry.target.style.transform = "translateY(0px)";
+            entries.forEach(function (entry) {
 
+                if (entry.isIntersecting) {
+
+                    entry.target.style.opacity = "1";
+
+                    entry.target.style.transform =
+                        "translateY(0)";
+
+                }
+
+            });
+
+        },
+
+        {
+            threshold: 0.15
         }
 
-    });
+    );
 
-}, {
-
-    threshold: 0.2
-
-});
 
 document.querySelectorAll(
-    ".card, .project-card, .timeline-item"
-).forEach(el => {
 
-    el.style.opacity = "0";
-    el.style.transform = "translateY(40px)";
-    el.style.transition = "0.8s";
+    ".card, .timeline-item, .education-card"
 
-    observer.observe(el);
+).forEach(function (element) {
+
+    element.style.opacity = "0";
+
+    element.style.transform =
+        "translateY(40px)";
+
+    element.style.transition =
+        "0.8s ease";
+
+    observer.observe(element);
 
 });
 
 
-// ==========================
-// END
-// ==========================
+/* ==========================
+   PORTFOLIO LOADED
+========================== */
 
-console.log("Portfolio Loaded Successfully ✅");
-
-
+console.log(
+    "Sahil Kumar Portfolio Loaded Successfully ✅"
+);
